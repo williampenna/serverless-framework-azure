@@ -1,1 +1,8 @@
-{"IsEncrypted":false,"Values":{"AzureWebJobsStorage":"UseDevelopmentStorage=true","FUNCTIONS_WORKER_RUNTIME":"node"}}
+{
+    "IsEncrypted":false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "AzureEventHubConnectionString": "Endpoint=sb://testwillehn.servicebus.windows.net/;SharedAccessKeyName=testEventHubRule;SharedAccessKey=QBwuw35iP7PXYS9W3Ho2STI53P6NAOb6w0aGE3IbVzc=;EntityPath=testeventhub",
+        "FUNCTIONS_WORKER_RUNTIME": "node"
+    }
+}

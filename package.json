@@ -3,18 +3,26 @@
   "version": "1.0.0",
   "description": "Azure Functions webpack sample for the Serverless framework using Typescript",
   "scripts": {
-    "test": "echo \"No tests yet...\"",
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha -r ts-node/register ./tests/*.ts --timeout 5000",
     "start": "func host start"
   },
   "keywords": [
     "azure",
     "serverless"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@azure/event-hubs": "^5.6.0",
+    "@azure/eventhubs-checkpointstore-blob": "^1.0.1",
+    "@azure/storage-blob": "^12.7.0"
+  },
   "devDependencies": {
     "@azure/functions": "^1.0.3",
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^9.0.0",
     "@types/node": "^13.1.8",
+    "chai": "^4.3.4",
     "fork-ts-checker-webpack-plugin": "^3.0.1",
+    "mocha": "^9.0.3",
     "serverless-azure-functions": "^2.1.0",
     "serverless-webpack": "^5.3.1",
     "ts-loader": "^6.2.1",

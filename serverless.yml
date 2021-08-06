@@ -11,13 +11,6 @@ provider:
   name: azure
   region: East US 2
   runtime: nodejs12
-  resourceGroup: test-event-hub
-  appInsights:
-    name: sls-eus2-dev-e96c4b-appinsights
-  storageAccount:
-    name: testehsaqfez
-  environment: # these will be created as application settings
-    VARIABLE_EHUB_CONNECTION_STRING: 'Endpoint=sb://testwillehn.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=PcoT9U/qABotQYrTTBS3E2qTApU8tg1yNr7wPw/VaVk='
 
   # you can define apim configuration here
   # apim:
@@ -65,10 +58,11 @@ functions:
     handler: src/handlers/goodbye.sayGoodbye
     events:
       - eventHub: true
-        name: goodbye #<string>, default - "myEventHubMessage", specifies which name is available on `context.bindings`
-        path: goodbye #<string>, specifies the Name of the Event Hub
+        name: eventHubMessages #<string>, default - "myEventHubMessage", specifies which name is available on `context.bindings`
+        path: hello #<string>, specifies the Name of the Event Hub
         consumerGroup: $Default #<string>, default - "$Default", specifies the consumerGroup to listen with
-        connection: VARIABLE_EHUB_CONNECTION_STRING #<string>, App Setting/environment variable which contains Event Hubs Namespace Connection String
+        connection: testWillEHN_RootManageSharedAccessKey_EVENTHUB #<string>, App Setting/environment variable which contains Event Hubs Namespace Connection String
+        cardinality: many
   # The following are a few examples of other events you can configure:
   # storageBlob:
   #   handler: src/handlers/storageBlob.printMessage
