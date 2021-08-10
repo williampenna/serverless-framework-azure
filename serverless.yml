@@ -11,6 +11,8 @@ provider:
   name: azure
   region: East US 2
   runtime: nodejs12
+  os: windows
+  resourceGroup: test-event-hub
 
   # you can define apim configuration here
   # apim:
@@ -53,16 +55,15 @@ functions:
         methods:
           - GET
         authLevel: anonymous # can also be `function` or `admin`
-
   goodbye:
     handler: src/handlers/goodbye.sayGoodbye
     events:
       - eventHub: true
-        name: eventHubMessages #<string>, default - "myEventHubMessage", specifies which name is available on `context.bindings`
-        path: hello #<string>, specifies the Name of the Event Hub
-        consumerGroup: $Default #<string>, default - "$Default", specifies the consumerGroup to listen with
-        connection: testWillEHN_RootManageSharedAccessKey_EVENTHUB #<string>, App Setting/environment variable which contains Event Hubs Namespace Connection String
-        cardinality: many
+        x-azure-settings:
+          name: eventHubMessages #<string>, default - "myEventHubMessage", specifies which name is available on `context.bindings`
+          eventHubName: goodbye #<string>, specifies the Name of the Event Hub
+          consumerGroup: $Default #<string>, default - "$Default", specifies the consumerGroup to listen with
+          connection: testWillEHN_RootManageSharedAccessKey_EVENTHUB #<string>, App Setting/environment variable which contains Event Hubs Namespace Connection String
   # The following are a few examples of other events you can configure:
   # storageBlob:
   #   handler: src/handlers/storageBlob.printMessage
