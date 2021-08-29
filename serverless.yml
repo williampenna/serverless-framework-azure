@@ -55,6 +55,15 @@ functions:
         methods:
           - GET
         authLevel: anonymous # can also be `function` or `admin`
+
+  assignedPhoto:
+    handler: src/handlers/photo.assigned
+    events:
+      - http: true
+        methods:
+          - GET
+        authLevel: anonymous
+
   goodbye:
     handler: src/handlers/goodbye.sayGoodbye
     events:
